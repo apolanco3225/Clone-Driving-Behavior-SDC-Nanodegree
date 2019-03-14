@@ -17,19 +17,20 @@ Rubric Points
 
 Using the simulator, 3 laps were recorded with deffirent objetives. The first lap was recorded normally, the second slower but trying to show perfect behavior and the final using a lot of recoveries so the neural network could respond to situations were the car is about to be out of the road.
 
-<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/arturo_bc.png' src='https://www.youtube.com/watch?v=3MyVkS9Rr9s'>
+<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/arturo_bc.png' width = 600 height=400 src='https://www.youtube.com/watch?v=3MyVkS9Rr9s'>
 
-The architecture for the neural network was similar to the one implemented by NVIDIA, which face a similar problem receiving 3 different images from center, left and right and designed a successful convolutional neural network to output a steering wheel angle>
+The architecture for the neural network was similar to the one implemented by NVIDIA, which face a similar problem receiving 3 different images from center, left and right and designed a successful convolutional neural network to output a steering wheel angle:
 
-<table style="width:100%">
-  <tr>
-    <th><img src='https://devblogs.nvidia.com/wp-content/uploads/2016/08/data-collection-system-624x411.png'></th>
-    <th><img src='https://devblogs.nvidia.com/wp-content/uploads/2016/08/cnn-architecture-624x890.png'></th> 
-    <th>Age</th>
-  </tr>
-/table>
+<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/nvidia_arch.png' width = 600 height=400 class='center'>
 
-the only difference is that the ReLu activation function for is replaced by ELU, which work better when the NN deals with negative values.
+
+The unique variation is that the ReLu activation function for the hidden layers is replaced by Exponential Linear Unit ELU, this modification was donde for the following reassons:
+
+    ELU becomes smooth slowly until its output equal to -α  value whereas RELU sharply smoothes.
+    Unlike to ReLU, ELU can produce negative outputs.
+    Using derivatives from the negative side avoids 'death neurons' 
+
+https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/activations.png
 
 A generator function was used in the input of the NN in order to get some extra data generated on the fly, this is a better practice than create it and store it in the hard disk since it could represent a very important size.
 
@@ -54,11 +55,14 @@ python drive.py model.json
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
 #### 1. An appropriate model architecture has been employed
 
 My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 109-143)
+
+<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/model_summary.png' width = 600 height=400 class='center'>
+
 
 The model includes ELU layers to introduce nonlinearity and good performance dealing with negative values (code line 109), and the data is normalized in the model using a normalize function (code line 39).
 
@@ -66,11 +70,21 @@ The model includes ELU layers to introduce nonlinearity and good performance dea
 
 The model contains dropout layers in order to reduce overfitting (model.py lines 112).
 
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 172). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 172). 
+
+The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+
+Data augmentation, increasing the number of training samples by performing some variations to the original data and create synthetic new samples:
+
+
+<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/aug.png' width = 600 height=400 class='center'>
+
 
 #### 3. Model parameter tuning
 
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 185).
+
+https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/adam.png
 
 #### 4. Appropriate training data
 
@@ -96,13 +110,11 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 The final model architecture (model.py lines 104) consisted of a convolution neural network with the following layers and layer sizes:
 
-alt text
 
 #### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
-![alt text][image2]
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center.
 
@@ -110,7 +122,6 @@ Then I repeated this process on track two in order to get more data points.
 
 To augment the data sat, I also flipped images and angles thinking that this would multiply my data by 3. For example, here is an image that has then been flipped:
 
-![alt text][image6] ![alt text][image7]
 
 After the collection process, I then preprocessed this data by using a good number of functions like normalization, randomly change the brightness, flip images, resize and crop.
 
