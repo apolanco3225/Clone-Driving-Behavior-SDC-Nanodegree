@@ -7,13 +7,17 @@ Deploy of NVIDIA's convnet architecture to clone driving behaviour in a game bas
 
 The goals / steps of this project are the following:
 
-    Use the simulator to collect data of good driving behavior
-    Build, a convolution neural network in Keras that predicts steering angles from images
-    Train and validate the model with a training and validation set
-    Test that the model successfully drives around track one without leaving the road
-    Summarize the results with a written report
+1. Use the simulator to collect data of good driving behavior
+2. Build, a convolution neural network in Keras that predicts steering angles from images
+3. Train and validate the model with a training and validation set
+4. Test that the model successfully drives around track one without leaving the road
+5. Summarize the results with a written report
 
-[image2]: images/center.png"Center Image" [image6]: images/not_flip.png "Normal Image" [image7]: images/flip.png "Flipped Image"
+[image2]: Clone-Driving-Behavior-SDC-Nanodegree/images/center.png "Center Image" 
+[image6]: Clone-Driving-Behavior-SDC-Nanodegree/images/not_flip.png "Normal Image" 
+[image7]: Clone-Driving-Behavior-SDC-Nanodegree/images/flip.png "Flipped Image"
+
+
 Rubric Points
 
 Using the simulator, 3 laps were recorded with deffirent objetives. The first lap was recorded normally, the second slower but trying to show perfect behavior and the final using a lot of recoveries so the neural network could respond to situations were the car is about to be out of the road.
