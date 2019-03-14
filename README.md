@@ -3,7 +3,7 @@
 Deploy of NVIDIA's convnet architecture to clone driving behaviour in a game based environment created by Udacity. The model was trained to output a steering angle to an autonomous vehicle in order to drive on a virtual tracks.
 #Behavioral Cloning
 
-<img src='Clone-Driving-Behavior-SDC-Nanodegree/images/nvidia_sdc.png' align='center'>
+<img src='https://devblogs.nvidia.com/wp-content/uploads/2016/08/5Driver-closeup-hands-1200x675-624x351.png' align='center'>
 
 The goals / steps of this project are the following:
 
