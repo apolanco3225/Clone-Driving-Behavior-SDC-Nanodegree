@@ -30,7 +30,12 @@ The unique variation is that the ReLu activation function for the hidden layers 
     Unlike to ReLU, ELU can produce negative outputs.
     Using derivatives from the negative side avoids 'death neurons' 
 
-https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/activations.png
+
+
+<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/activations.png' width = 600 height=400 class='center'>
+
+
+
 
 A generator function was used in the input of the NN in order to get some extra data generated on the fly, this is a better practice than create it and store it in the hard disk since it could represent a very important size.
 
@@ -84,7 +89,8 @@ Data augmentation, increasing the number of training samples by performing some 
 
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 185).
 
-https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/adam.png
+<img src='https://raw.githubusercontent.com/apolanco3225/Clone-Driving-Behavior-SDC-Nanodegree/master/CarND-Behavioral-Cloning-P3-master/images/adam.png' width = 600 height=400 class='center'>
+
 
 #### 4. Appropriate training data
 
